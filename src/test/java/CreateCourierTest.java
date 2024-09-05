@@ -12,18 +12,21 @@ public class CreateCourierTest {
 
     CourierClient courierClient;
     Courier courier;
-    private int courierId;
+    int courierId;
+
 
     @Before
     public void setUp() {
         courierClient = new CourierClient();
         courier = Courier.getRandomCourier();
+        courierId = Courier.getRandomCourierId();
     }
 
     @After
     public void tearDown() {
         if (courierId != 0) {
             courierClient.deleteCourier(courierId);
+
         }
     }
 

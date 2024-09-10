@@ -12,17 +12,22 @@ public class CreateCourierTest {
 
     CourierClient courierClient;
     Courier courier;
-    private int courierId;
+    int courierId;
+    CourierCredentials courierCredentials;
+
 
     @Before
     public void setUp() {
         courierClient = new CourierClient();
         courier = Courier.getRandomCourier();
+        courierCredentials = new CourierCredentials(courier.getLogin(), courier.getPassword());
     }
 
     @After
     public void tearDown() {
-        if (courierId != 0) {
+        ValidatableResponse loginResponse = courierClient.loginCourier(courierCredentials);
+        if (loginResponse.extract().statusCode() == 200) {
+            courierId = loginResponse.extract().path("id");
             courierClient.deleteCourier(courierId);
         }
     }

@@ -1,4 +1,7 @@
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+
+import java.util.Random;
 
 public class Courier {
 
@@ -6,19 +9,20 @@ public class Courier {
     private String password;
     private String firstName;
 
-    public Courier() {
-    }
+
 
     public Courier(String login, String password, String firstName) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
+
     }
 
     public static Courier getRandomCourier() {
         final String courierLogin = RandomStringUtils.randomAlphabetic(10);
         final String courierPassword = RandomStringUtils.randomAlphabetic(10);
         final String courierFirstName = RandomStringUtils.randomAlphabetic(10);
+
         return new Courier(courierLogin, courierPassword, courierFirstName);
     }
 

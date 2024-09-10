@@ -26,6 +26,11 @@ public class Courier {
         return new Courier(courierLogin, courierPassword, courierFirstName);
     }
 
+    public static int getRandomCourierId() {
+        Random random = new Random();
+        return Math.abs(random.nextInt());
+    }
+
     public String getLogin() {
         return login;
     }
